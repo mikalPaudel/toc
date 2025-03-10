@@ -306,4 +306,139 @@ Used to express the worst-case runtime of an algorithm:
 - If **P = NP**, then all NP problems become solvable in polynomial time → huge impact on cryptography, AI, and optimization.
 - If **P ≠ NP**, it means some problems are inherently difficult to solve but easy to verify.
 
-🚀 Let me know if you need further clarification!
+
+### **Numerical and Problem-Solving Questions for Theory of Computation**  
+Below are **problems and solutions** for **every major topic** in the syllabus.
+
+---
+
+## **Unit 1: Introduction**
+### **Problem 1: Set, Relation, and Function**
+🔹 **Problem:**  
+Let **A = {1,2,3,4}** and **B = {a,b,c}**. Define a relation **R** from **A** to **B** as:  
+**R = {(1,a), (2,b), (3,c), (4,a)}**  
+- Is **R** a function?  
+- If yes, is it one-to-one (injective) or onto (surjective)?  
+
+✅ **Solution:**  
+- **Function Check:** Every element of **A** has exactly **one** image in **B**, so **R is a function**.  
+- **Injective:** Different elements of **A** map to different elements in **B**, except **4 → a** and **1 → a**. So, **not injective**.  
+- **Surjective:** Since **b** and **c** are mapped, but **d** is missing in **B**, it is **not onto**.
+
+---
+
+### **Problem 2: Proof by Contradiction**
+🔹 **Problem:**  
+Prove that **√2 is irrational** using contradiction.
+
+✅ **Solution:**  
+1. Assume **√2 is rational**, i.e., **√2 = p/q**, where **p** and **q** are integers with **no common factors**.  
+2. Squaring both sides:  
+   \[
+   2 = p^2 / q^2 \Rightarrow p^2 = 2q^2
+   \]
+   This means **p² is even**, so **p is even** (let **p = 2k**).  
+3. Substituting in **p² = 2q²**,  
+   \[
+   (2k)^2 = 2q^2 \Rightarrow 4k^2 = 2q^2 \Rightarrow q^2 = 2k^2
+   \]
+   So **q is also even**, contradicting our assumption that **p and q have no common factors**.  
+4. **Thus, √2 is irrational.** ❌
+
+---
+
+## **Unit 2: Finite Automata and Regular Language**
+### **Problem 3: Construct a DFA for a language accepting all strings over {0,1} ending in "01"**  
+✅ **Solution:**
+- **States:** \( q_0, q_1, q_2 \)
+- **Transitions:**
+  - \( q_0 \to q_0 \) on 0
+  - \( q_0 \to q_1 \) on 1
+  - \( q_1 \to q_2 \) on 0
+  - \( q_2 \to q_2 \) on 0,1 (final state)  
+
+| State | 0 | 1 |
+|---|---|---|
+| q0 (start) | q0 | q1 |
+| q1 | q2 | q1 |
+| q2 (final) | q2 | q2 |
+
+---
+
+### **Problem 4: Pumping Lemma for Regular Languages**
+🔹 **Problem:**  
+Prove that the language **L = {0^n1^n | n ≥ 0}** is not regular using the **Pumping Lemma**.
+
+✅ **Solution:**  
+1. **Assume L is regular.**  
+2. Let **p** be the pumping length. Choose **w = 0^p 1^p**.  
+3. Split **w = xyz**, where **|xy| ≤ p**, and **y ≠ ε**.  
+   - Since **|xy| ≤ p**, **y** consists only of **0’s**.  
+4. Pumping **y** → If we remove or add occurrences of **y**, the number of 0s ≠ number of 1s.  
+5. Contradiction! **L is not regular.** ❌
+
+---
+
+## **Unit 3: Context-Free Grammar and Pushdown Automata**
+### **Problem 5: Convert CFG to CNF**
+🔹 **Problem:** Convert the CFG  
+\[
+S \to AB \ | \ aA, A \to b \ | \ bS
+\]  
+to **Chomsky Normal Form (CNF)**.
+
+✅ **Solution:**  
+1. **Introduce new variables for terminals:**  
+   - Let **X → a**, **Y → b**  
+   - Rewrite as:  
+     \[
+     S \to AB \ | \ XA, A \to Y \ | \ YS
+     \]
+2. **Check CNF rules**: Each rule now fits **A → BC or A → a**, so this is CNF. ✅
+
+---
+
+## **Unit 4: Turing Machines**
+### **Problem 6: Design a Turing Machine for L = {0^n1^n | n ≥ 1}**
+✅ **Solution:**
+1. **Replace the first 0 with X, find the first 1, replace it with Y.**  
+2. **Repeat until all 0’s and 1’s are replaced.**  
+3. **If extra 0’s or 1’s remain, reject. Otherwise, accept.**
+
+| State | Read | Write | Move | Next State |
+|---|---|---|---|---|
+| q0 | 0 | X | R | q1 |
+| q1 | 0 | 0 | R | q1 |
+| q1 | 1 | Y | L | q2 |
+| q2 | 0 | 0 | L | q2 |
+| q2 | X | X | R | q0 |
+| q0 | Y | Y | R | q3 |
+| q3 | (blank) | (blank) | - | Accept |
+
+---
+
+## **Unit 5: Undecidability**
+### **Problem 7: Halting Problem**
+🔹 **Problem:** Prove that the **Halting Problem** is undecidable.
+
+✅ **Solution:**  
+1. Assume there is a **decider T** that determines if a program **halts**.  
+2. Construct a new program **H**:  
+   - If T says the program **halts**, H enters an infinite loop.  
+   - If T says the program **loops**, H halts.  
+3. This creates a contradiction! **No such T can exist, so the problem is undecidable.** ❌
+
+---
+
+## **Unit 6: Computational Complexity**
+### **Problem 8: Prove that SAT is NP-Complete**
+✅ **Solution:**  
+1. **SAT is in NP**: Given a satisfying assignment, we can verify it in polynomial time.  
+2. **Reduction from 3-SAT**: Convert any boolean formula into conjunctive normal form (CNF).  
+3. **If SAT could be solved in polynomial time, P = NP.**  
+4. Since no polynomial-time algorithm exists, **SAT is NP-Complete.**
+
+---
+
+## **Conclusion**
+These are the key **problems and solutions** that can be asked from **Theory of Computation**. Let me know if you need **more examples or explanations**! 🚀
