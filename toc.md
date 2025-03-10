@@ -218,3 +218,92 @@ Here are the notes for the topics mentioned in the image:
   - Accepted by a TM that may **not** halt on all inputs.
 
 ---
+
+# **Unit 6: Computational Complexity (4 hrs.)**  
+
+## **6.1 Introduction to Complexity Theory**  
+**Computational Complexity Theory** studies the efficiency of algorithms in terms of **time** and **space**. It helps classify problems based on their difficulty and solvability.  
+
+### **Tractable vs. Intractable Problems**  
+- **Tractable Problems**: Problems that can be solved efficiently (i.e., in polynomial time, denoted as O(n^k) for some constant k).  
+- **Intractable Problems**: Problems for which no polynomial-time algorithm is known (i.e., they require exponential time or worse, such as O(2^n)).  
+
+### **Time and Space Complexity**  
+- **Time Complexity**: The number of computational steps required to solve a problem as a function of input size **n**.  
+- **Space Complexity**: The amount of memory required by an algorithm.  
+
+### **Big-O Notation** (Asymptotic Complexity)  
+Used to express the worst-case runtime of an algorithm:  
+- **O(1)** → Constant time (e.g., accessing an array element).  
+- **O(log n)** → Logarithmic time (e.g., binary search).  
+- **O(n)** → Linear time (e.g., iterating through an array).  
+- **O(n log n)** → Log-linear time (e.g., merge sort, quicksort).  
+- **O(n²), O(n³), O(2^n), O(n!)** → Polynomial to exponential time (slower algorithms).  
+
+---
+
+## **6.3 Class P and Class NP Problems**  
+
+### **Class P (Polynomial Time Problems)**  
+- Problems that can be solved in **polynomial time** (O(n^k) for some constant k).  
+- Efficiently solvable using deterministic algorithms.  
+- Examples:
+  - **Sorting** (Merge Sort, Quick Sort → O(n log n))  
+  - **Graph Algorithms** (Dijkstra’s algorithm → O(V²))  
+  - **Matrix Multiplication** (O(n³))  
+
+### **Class NP (Nondeterministic Polynomial Time Problems)**  
+- Problems for which a solution can be **verified** in polynomial time but may not be **solvable** in polynomial time.  
+- Can be solved efficiently using a **non-deterministic** machine (e.g., guessing the solution and verifying it in polynomial time).  
+- Examples:
+  - **Traveling Salesman Problem (TSP)**
+  - **Graph Coloring Problem**
+  - **Boolean Satisfiability (SAT)**
+
+### **P vs. NP Question**  
+- **Does P = NP?**  
+  - If every problem whose solution can be verified in polynomial time (NP) can also be solved in polynomial time (P), then **P = NP**.  
+  - If not, **P ≠ NP**.  
+  - This is one of the biggest **open problems** in computer science.
+
+---
+
+## **6.4 NP-Complete Problems**  
+
+### **Definition**  
+- **NP-Complete (NPC) problems** are the hardest problems in **NP**.  
+- If any NP-Complete problem can be solved in polynomial time, then **P = NP**.  
+- **All NP problems can be reduced to an NP-Complete problem in polynomial time.**  
+
+### **Steps to Prove a Problem is NP-Complete**
+1. **Show the problem is in NP** (i.e., a solution can be verified in polynomial time).  
+2. **Reduce a known NP-Complete problem** to the given problem in polynomial time.  
+
+### **Examples of NP-Complete Problems**
+- **Boolean Satisfiability (SAT) Problem**  
+- **Traveling Salesman Problem (TSP)**  
+- **3-SAT Problem**  
+- **Graph Coloring Problem**  
+- **Knapsack Problem**  
+
+### **NP-Hard vs. NP-Complete**
+- **NP-Hard**: At least as hard as NP problems but **not necessarily in NP** (may not be verifiable in polynomial time).  
+- **NP-Complete**: A subset of NP-Hard problems that are in NP.  
+
+---
+
+### **Summary**
+| **Class**     | **Definition** | **Examples** |
+|--------------|----------------|-------------|
+| **P** | Problems that can be **solved in polynomial time**. | Sorting, Graph Traversal, Shortest Path |
+| **NP** | Problems whose **solutions can be verified in polynomial time**. | SAT, Graph Coloring, TSP |
+| **NP-Complete** | The hardest problems in NP. If one can be solved in **P**, then **P = NP**. | SAT, 3-SAT, TSP |
+| **NP-Hard** | At least as hard as NP problems but may not be in NP. | Halting Problem, Generalized Chess |
+
+---
+
+### **Open Question: Does P = NP?**
+- If **P = NP**, then all NP problems become solvable in polynomial time → huge impact on cryptography, AI, and optimization.
+- If **P ≠ NP**, it means some problems are inherently difficult to solve but easy to verify.
+
+🚀 Let me know if you need further clarification!
