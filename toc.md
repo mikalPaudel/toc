@@ -442,3 +442,133 @@ to **Chomsky Normal Form (CNF)**.
 
 ## **Conclusion**
 These are the key **problems and solutions** that can be asked from **Theory of Computation**. Let me know if you need **more examples or explanations**! 🚀
+
+
+### **Basic Formulas and Rules for Problems in Theory of Computation**  
+
+Here are the essential **formulas, theorems, and rules** for the problems discussed:
+
+---
+
+## **1. Proof Techniques**  
+
+### **Proof by Contradiction**
+- Assume the **opposite** of what you want to prove.  
+- Show that this assumption leads to a **contradiction** with known facts.
+- Conclude that the **original assumption must be false**.
+
+✅ **Example Formula (Irrationality of √2)**:  
+- Assume **√2 = p/q** where **p, q are co-prime**.
+- Show **p² and q² are both even** → contradicts the assumption.
+- Conclude that **√2 is irrational**.
+
+---
+
+## **2. Finite Automata and Regular Languages**  
+
+### **DFA (Deterministic Finite Automaton) Transition Function**  
+A DFA is a **5-tuple (Q, Σ, δ, q₀, F)** where:  
+- **Q** = Set of states  
+- **Σ** = Input alphabet  
+- **δ: Q × Σ → Q** (Transition function)  
+- **q₀** = Start state  
+- **F** = Set of accepting states  
+
+✅ **Key Rule:**  
+A language is **regular** if it can be accepted by a **DFA**.
+
+### **Regular Expressions & Finite Automata Equivalence**
+**Rules for constructing regular expressions:**  
+1. **Union:** If L₁ and L₂ are regular languages, then **L₁ ∪ L₂** is also regular.  
+2. **Concatenation:** If L₁ and L₂ are regular, then **L₁L₂** is also regular.  
+3. **Kleene Star:** If L is regular, then **L\*** (zero or more repetitions of L) is also regular.
+
+✅ **Formula:**  
+For **any regular language**, there exists a **finite automaton** that recognizes it.
+
+---
+
+## **3. Context-Free Grammars (CFG) and Pushdown Automata (PDA)**  
+
+### **Chomsky Normal Form (CNF) Rules**  
+A **CFG is in CNF** if:  
+1. Each production is of the form **A → BC** (where A, B, and C are non-terminals).  
+2. Or it is of the form **A → a** (where "a" is a terminal).  
+3. No **ε-productions** (except for the start symbol).  
+
+✅ **Conversion Steps:**  
+1. Remove **ε-productions** (A → ε).  
+2. Remove **unit productions** (A → B).  
+3. Convert **terminals with non-terminals**.  
+
+---
+
+## **4. Turing Machines (TM)**  
+
+### **Basic Rules for TM Computation**
+1. **TM is a 7-tuple**: (Q, Σ, Γ, δ, q₀, q_accept, q_reject)  
+   - **Q** = States  
+   - **Σ** = Input alphabet  
+   - **Γ** = Tape alphabet (includes blank)  
+   - **δ: Q × Γ → Q × Γ × {L, R}** (Transition function)  
+   - **q₀** = Start state  
+   - **q_accept, q_reject** = Halting states  
+
+✅ **Acceptance Rule:**  
+A string is **accepted** if TM enters **q_accept**.  
+A string is **rejected** if TM enters **q_reject**.  
+
+✅ **Turing Machine for L = {0ⁿ1ⁿ} Rule:**  
+1. Replace **first 0 with X** → Match it with **rightmost 1** (replace with Y).  
+2. Repeat until all **0s are X and 1s are Y**.  
+3. If unmatched symbols remain → **Reject**.  
+4. If only Xs and Ys remain → **Accept**.
+
+---
+
+## **5. Undecidability and Church-Turing Thesis**  
+
+### **Key Theorems:**  
+✅ **Church-Turing Thesis:**  
+- Every problem solvable by an **algorithm** can be solved by a **Turing Machine**.
+
+✅ **Halting Problem:**  
+- **No Turing Machine** can decide whether an arbitrary Turing Machine halts on a given input.
+
+✅ **Key Rule:**  
+If a problem is **undecidable**, then **no algorithm exists** to solve it.
+
+---
+
+## **6. Computational Complexity**  
+
+### **P vs NP Classes**  
+1. **Class P:** Problems that can be solved in **polynomial time (O(n^k))**.  
+2. **Class NP:** Problems that can be **verified** in polynomial time.  
+3. **NP-Complete:** Problems that are **both NP and as hard as any NP problem**.  
+4. **NP-Hard:** At least as hard as NP problems but not necessarily in NP.
+
+✅ **Cook’s Theorem:**  
+- **SAT (Boolean Satisfiability)** is **NP-complete**.
+
+✅ **Big-O Complexity Rules:**  
+- **O(1):** Constant time  
+- **O(log n):** Logarithmic time  
+- **O(n):** Linear time  
+- **O(n²):** Quadratic time  
+- **O(2ⁿ):** Exponential time (intractable)
+
+---
+
+### **Final Summary Table**
+
+| **Topic** | **Key Formula / Rule** |
+|-----------|---------------------|
+| **Proof by Contradiction** | Assume the opposite → Find contradiction |
+| **DFA & Regular Languages** | DFA → Regular Expression equivalence |
+| **Chomsky Normal Form** | A → BC or A → a |
+| **Turing Machine** | δ(q, a) = (q', b, L/R) |
+| **Halting Problem** | No TM can decide if another TM halts |
+| **Computational Complexity** | P ⊆ NP, NP-Complete problems |
+
+Let me know if you need explanations for any specific topic! 🚀
